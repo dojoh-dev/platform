@@ -1,0 +1,21 @@
+{
+  "name": "@repo/router",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "tsgo --watch",
+    "build": "tsgo"
+  },
+  "dependencies": {
+    "@typescript/native-preview": "7.0.0-dev.20260223.1"
+  }
+}

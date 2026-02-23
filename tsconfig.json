@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client"],
+    "skipLibCheck": true,
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+    "moduleDetection": "force",
+    "noEmit": true,
+
+    /* Linting */
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "erasableSyntaxOnly": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+
+    "baseUrl": ".",
+    "paths": {
+      "@domains/*": ["./src/domains/*"],
+      "@app/*": ["./src/app/*"],
+      "@infra/*": ["./src/infra/*"],
+      "@shared/*": ["./src/shared/*"],
+    },
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"],
+}

@@ -1,0 +1,58 @@
+.grid {
+  display: grid;
+  grid-template:
+    'summary gutterY code'
+    'summary gutterY gutterX'
+    'summary gutterY console';
+  grid-template-columns: 1fr 1px 1fr;
+  grid-template-rows: 1fr 1px 250px;
+  height: 100%;
+  padding: 10px;
+  gap: 6px;
+}
+
+.gutterX {
+  grid-area: gutterX;
+  cursor: row-resize;
+}
+
+.gutterY {
+  grid-area: gutterY;
+  cursor: col-resize;
+}
+
+.gutterY,
+.gutterX {
+  user-select: none;
+  transition:
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+  transition-delay: 300ms;
+  opacity: 0.85;
+
+  &:hover {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 0 1px var(--primary-color);
+  }
+}
+
+.summary {
+  grid-area: summary;
+  background-color: var(--card-color);
+  border-radius: var(--radii);
+  border: 1px solid var(--border-color);
+}
+
+.code {
+  grid-area: code;
+  background-color: var(--card-color);
+  border-radius: var(--radii);
+  border: 1px solid var(--border-color);
+}
+
+.console {
+  grid-area: console;
+  background-color: var(--card-color);
+  border-radius: var(--radii);
+  border: 1px solid var(--border-color);
+}
