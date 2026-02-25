@@ -13,4 +13,7 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   eslintConfigPrettier,
+  {
+    ignores: ["**/dist/**", "**/node_modules/**", "**/packages/**"],
+  }
 ]);

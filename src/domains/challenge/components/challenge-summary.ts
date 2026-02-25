@@ -1,11 +1,11 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
+import resetStyles from '@shared/styles/reset.css?inline';
+import badge from '@shared/ui/badge';
+import { file } from '@shared/ui/icons';
+import { css, html, LitElement, unsafeCSS } from 'lit';
 import { customElement, property } from 'lit/decorators.js';
 
-import { file } from '@shared/ui/icons';
-import badge from '@shared/ui/badge';
-import resetStyles from '@shared/styles/reset.css?inline';
-import Readme from '../services/readme.service';
 import readmeStyles from '../services/readme.css?inline';
+import Readme from '../services/readme.service';
 
 @customElement('challenge-summary')
 export class ChallengeSummary extends LitElement {

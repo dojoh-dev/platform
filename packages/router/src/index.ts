@@ -136,7 +136,7 @@ const handleMiddleware = async (middleware: XMiddleware[]) => {
   // next
   const dispatch = async (i: number): Promise<void> => {
     if (i <= index) {
-      throw new Error('next() called multiple times');
+      throw new RangeError('next() called multiple times');
     }
 
     index = i;

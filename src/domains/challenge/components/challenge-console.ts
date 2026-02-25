@@ -1,9 +1,8 @@
-import { LitElement, html, css, unsafeCSS } from 'lit';
-import { customElement, state } from 'lit/decorators.js';
-
-import { play, testTubeDiagonal } from '@shared/ui/icons';
-import resetStyles from '@shared/styles/reset.css?inline';
 import defaultStyles from '@shared/styles/default.css?inline';
+import resetStyles from '@shared/styles/reset.css?inline';
+import { play, testTubeDiagonal } from '@shared/ui/icons';
+import { css, html, LitElement, unsafeCSS } from 'lit';
+import { customElement, state } from 'lit/decorators.js';
 
 @customElement('challenge-console')
 export class ChallengeConsole extends LitElement {
