@@ -6,7 +6,7 @@ const $$ = <S extends Element>(selector: string): S => {
   return element;
 };
 
-export const effect = (fn: () => void, delay: number = 10) => {
+export const effect = (fn: () => void, delay: number = 25) => {
   setTimeout(() => {
     fn();
   }, delay);

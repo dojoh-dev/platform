@@ -24,6 +24,7 @@
   line-height: 1.7;
   font-size: 16px;
   max-width: 880px;
+  height: calc(100% - 50px);
   margin: 0 auto;
   padding: 2rem;
 

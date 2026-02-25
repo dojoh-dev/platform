@@ -4,11 +4,11 @@
     'summary gutterY code'
     'summary gutterY gutterX'
     'summary gutterY console';
-  grid-template-columns: 1fr 1px 1fr;
-  grid-template-rows: 1fr 1px 250px;
+  grid-template-columns: 1fr 4px 1fr;
+  grid-template-rows: 1fr 4px 250px;
   height: 100%;
   padding: 10px;
-  gap: 6px;
+  gap: 4px;
 }
 
 .gutterX {
@@ -32,7 +32,6 @@
 
   &:hover {
     background-color: var(--primary-color);
-    box-shadow: 0 0 0 1px var(--primary-color);
   }
 }
 

@@ -37,6 +37,7 @@ export default class Readme {
 
     // Unordered list
     markdown = markdown.replace(/^- (.*)$/gm, (_, t) => Readme.list(t));
+    markdown = markdown.replace(/^\* (.*)$/gm, (_, t) => Readme.list(t));
 
     // Ordered list
     markdown = markdown.replace(/^\d+\. (.*)$/gm, (_, t) => Readme.list(t));
