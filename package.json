@@ -5,11 +5,11 @@
   "type": "module",
   "main": "src/main.ts",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
+    "dev": "turbo dev",
+    "build": "turbo check-types build",
     "preview": "vite preview",
     "format": "prettier --write '**/*.ts'",
-    "lint": "eslint . --fix --ext .ts",
+    "lint": "turbo lint",
     "test": "echo \"Error: no test specified\" && exit 0",
     "prepare": "husky"
   },
@@ -22,22 +22,15 @@
   "author": "",
   "packageManager": "pnpm@10.24.0",
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
-    "@types/node": "^24.10.13",
-    "eslint": "^10.0.1",
-    "eslint-config-prettier": "^10.1.8",
-    "globals": "^17.3.0",
     "husky": "^9.1.7",
-    "jiti": "^2.6.1",
     "lint-staged": "^16.2.7",
     "prettier": "3.8.1",
-    "typescript": "~5.9.3",
-    "typescript-eslint": "^8.56.0"
+    "turbo": "^2.8.11"
   },
-  "dependencies": {
-    "@repo/router": "workspace:*",
-    "lit": "^3.3.2",
-    "vite": "^8.0.0-beta.13"
+  "pnpm": {
+    "overrides": {
+      "eslint": "^9.0.0"
+    }
   }
 }

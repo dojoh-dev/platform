@@ -1,0 +1,229 @@
+.readme-content {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  --rm-font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  --rm-font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  --rm-text: #f1f1f1;
+  --rm-heading: #f1f1f1;
+  --rm-muted: #9a9a9a;
+  --rm-border: #3a3a3a;
+  --rm-bg-surface: #2a2a2a;
+  --rm-bg-elevated: #333333;
+
+  font-family: var(--rm-font-sans);
+  color: var(--rm-text);
+  line-height: 1.7;
+  font-size: 16px;
+  max-width: 880px;
+  height: calc(100% - 50px);
+  margin: 0 auto;
+  padding: 0.725rem 2rem;
+
+  /* --------------------------------
+     HEADINGS
+  -------------------------------- */
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--rm-heading);
+    font-weight: 600;
+    line-height: 1.25;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    border-bottom: 1px solid var(--rm-border);
+    padding-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--rm-border);
+    padding-bottom: 0.4rem;
+  }
+
+  h3 {
+    font-size: 1.25rem;
+  }
+  h4 {
+    font-size: 1.1rem;
+  }
+  h5 {
+    font-size: 1rem;
+  }
+  h6 {
+    font-size: 0.9rem;
+    color: var(--rm-muted);
+  }
+
+  /* --------------------------------
+     TEXT
+  -------------------------------- */
+
+  p {
+    margin: 0.8rem 0;
+  }
+  strong {
+    font-weight: 600;
+  }
+  em {
+    font-style: italic;
+  }
+  del {
+    color: var(--rm-muted);
+  }
+
+  mark {
+    background: var(--rm-bg-elevated);
+    color: var(--rm-text);
+    padding: 0.1em 0.3em;
+    border-radius: 4px;
+  }
+
+  /* --------------------------------
+     LINKS
+  -------------------------------- */
+
+  a {
+    color: #4da3ff;
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  /* --------------------------------
+     LISTS
+  -------------------------------- */
+
+  ul,
+  ol {
+    padding-left: 1.5rem;
+    margin: 0.8rem 0;
+  }
+
+  li {
+    margin: 0.3rem 0;
+  }
+
+  /* --------------------------------
+     BLOCKQUOTE
+  -------------------------------- */
+
+  blockquote {
+    border-left: 4px solid var(--rm-border);
+    background: var(--rm-bg-surface);
+    padding: 0.75rem 1rem;
+    margin: 1rem 0;
+    color: var(--rm-text);
+  }
+
+  /* --------------------------------
+     CODE
+  -------------------------------- */
+
+  code {
+    font-family: var(--rm-font-mono);
+    background: var(--rm-bg-elevated);
+    color: #e6e6e6;
+    padding: 0.2em 0.4em;
+    border-radius: 6px;
+    font-size: 0.9em;
+  }
+
+  pre {
+    background: var(--rm-bg-surface);
+    padding: 1rem;
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--rm-border);
+    margin: 1rem 0;
+  }
+
+  pre code {
+    background: transparent;
+    color: #e6e6e6;
+    padding: 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    display: block;
+  }
+
+  /* --------------------------------
+     TABLES
+  -------------------------------- */
+
+  table {
+    border-collapse: collapse;
+    margin: 1rem 0;
+    width: 100%;
+    font-size: 0.95rem;
+    background: var(--rm-bg-surface);
+  }
+
+  th,
+  td {
+    border: 1px solid var(--rm-border);
+    padding: 0.6rem 0.8rem;
+    text-align: left;
+  }
+
+  th {
+    background: var(--rm-bg-elevated);
+    font-weight: 600;
+    color: var(--rm-heading);
+  }
+
+  tr:nth-child(even) {
+    background: #262626;
+  }
+
+  /* --------------------------------
+     MISC
+  -------------------------------- */
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--rm-border);
+    margin: 2rem 0;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 6px;
+    margin: 1rem 0;
+  }
+
+  dt {
+    font-weight: 600;
+  }
+  dd {
+    margin: 0 0 0.8rem 1rem;
+    color: var(--rm-muted);
+  }
+
+  sup {
+    font-size: 0.75em;
+  }
+
+  abbr {
+    border-bottom: 1px dotted var(--rm-muted);
+    cursor: help;
+  }
+}

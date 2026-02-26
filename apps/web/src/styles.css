@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans+Code:ital,wght@0,300..800;1,300..800&family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Trocchi&display=swap');
+
+:root {
+  /* Colors */
+  --primary-color: hsl(260deg 100% 68%);
+  --secondary-color: hsl(0deg 0% 55%);
+  --foreground-color: hsl(0, 0%, 94%);
+  --background-color: hsl(0, 0%, 4%);
+  --border-color: hsl(0, 0%, 24%);
+  --black-color: hsl(0, 0%, 13%);
+
+  /* Layout */
+  --radii: 10px;
+  --spacing: 10px;
+
+  /* Typography */
+  --font-sans: 'Public Sans', sans-serif;
+  --font-mono: 'Google Sans Code', monospace;
+  --font-sans-serif: 'Trocchi', serif;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
+  --line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  outline: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#app,
+html,
+body {
+  min-width: 100%;
+  height: 100%;
+  font-family: var(--font-sans);
+  background-color: var(--background-color);
+  color: var(--foreground-color);
+}

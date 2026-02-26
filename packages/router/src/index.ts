@@ -77,6 +77,7 @@ const handleRoute = (
 ) => {
   try {
     if (route) {
+      console.debug(history.type);
       handleMiddleware(middleware).then(async () =>
         updateContent(await collectRouteContent(route))
       );

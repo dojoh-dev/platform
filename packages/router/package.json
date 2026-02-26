@@ -12,10 +12,16 @@
     }
   },
   "scripts": {
-    "dev": "tsgo --watch",
-    "build": "tsgo"
+    "watch": "tsgo --watch",
+    "build": "tsgo",
+    "lint": "eslint src/ --fix --ext .ts"
   },
   "dependencies": {
     "@typescript/native-preview": "7.0.0-dev.20260223.1"
+  },
+  "devDependencies": {
+    "eslint": "^10.0.2",
+    "@repo/eslint-config": "workspace:*",
+    "@repo/typescript-config": "workspace:*"
   }
 }
