@@ -1,0 +1,120 @@
+name: Preview
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [main]
+
+env:
+  REGION: us-central1
+  REPO: platform-preview
+  IMAGE: platform-preview
+  PROJECT_ID: dojoh-dev
+
+concurrency:
+  group: preview-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '24'
+
+      - name: Install dependencies
+        run: npm install -g pnpm && pnpm install --frozen-lockfile
+
+      - name: Test build
+        run: pnpm build
+
+      - name: Check format
+        run: npx prettier --check '**/*.ts'
+
+      - name: Lint code
+        run: pnpm lint
+
+      - name: Type check
+        run: pnpm run check-types
+
+      - name: Unit tests
+        run: pnpm test
+
+  preview:
+    needs: test
+    if: needs.test.result == 'success'
+    runs-on: ubuntu-latest
+    outputs:
+      service_url: ${{ steps.deploy.outputs.service_url }}
+    steps:
+      - name: Checkout Head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          credentials_json: ${{ secrets.GCR_KEY }}
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ env.PROJECT_ID }}
+
+      - name: Configure Docker Auth
+        run: |
+          gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build Image
+        run: |
+          docker build -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO }}/${{ env.IMAGE }}:${{ github.event.pull_request.number }} -f ci/Dockerfile .
+
+      - name: Push Image
+        run: |
+          docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO }}/${{ env.IMAGE }}:${{ github.event.pull_request.number }}
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        run: |
+          SERVICE_URL=$(
+            gcloud run deploy platform-preview-${{ github.event.pull_request.number }} \
+              --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO }}/${{ env.IMAGE }}:${{ github.event.pull_request.number }} \
+              --region ${{ env.REGION }} \
+              --platform managed \
+              --format 'value(status.url)'
+          )
+
+          echo "service_url=$SERVICE_URL" >> $GITHUB_OUTPUT
+
+      - name: Allow Crew Only
+        run: |
+          gcloud run services add-iam-policy-binding platform-preview-${{ github.event.pull_request.number }} \
+            --region ${{ env.REGION }} \
+            --member="allAuthenticatedUsers" \
+            --role="roles/run.invoker" \
+            --condition=None
+
+  comment:
+    runs-on: ubuntu-latest
+    needs: preview
+    if: needs.preview.result == 'success'
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Comment on PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SERVICE_URL: ${{ needs.preview.outputs.service_url }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+        run: |
+          gh pr comment $PR_NUMBER --body "🚀 Preview deployed: $SERVICE_URL"

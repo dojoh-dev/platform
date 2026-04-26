@@ -17,16 +17,25 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src'),
     },
   },
+  css: {
+    modules: {
+      generateScopedName: '[name]__[local]___[hash:base64:5]',
+      localsConvention: 'camelCaseOnly',
+    },
+  },
   server: {
     port: 4000,
     cors: true,
+    server: {
+      allowedHosts: true,
+    },
   },
   define: {
     'process.env': {},
   },
   build: {
     target: 'esnext',
-    cssCodeSplit: false,
+    cssCodeSplit: true,
     lib: {
       entry: path.resolve(__dirname, 'lib/entry-client.tsx'),
       formats: ['es'],
