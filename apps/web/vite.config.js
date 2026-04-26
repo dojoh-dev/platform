@@ -8,6 +8,21 @@ const __dirname = dirname(__filename);
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    allowedHosts: true,
+    proxy: {
+      '/challenge-mf': {
+        target: 'http://localhost:4000',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/challenge-mf/, ''),
+      },
+    },
+  },
+  build: {
+    rollupOptions: {
+      external: ['/challenge-mf/lib/entry-client.mjs'],
+    },
+  },
   resolve: {
     alias: {
       '@domains': path.resolve(__dirname, 'src/domains'),

@@ -1,3 +1,3 @@
 export const effect = (fn: () => void) => {
-  setTimeout(fn, 25);
+	setTimeout(fn, 25);
 };

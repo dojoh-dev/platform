@@ -1,7 +1,7 @@
 import styles from './layout.module.css';
 
 export default function () {
-  return /*html*/ `
+	return /*html*/ `
 		<header class="${styles.header}">
 			<span>
 				<img src="/rounded.png" alt="logo" width="24" height="24" />
