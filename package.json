@@ -6,22 +6,25 @@
   "main": "src/main.ts",
   "scripts": {
     "dev": "turbo dev",
-    "build": "turbo check-types build",
-    "preview": "vite preview",
+    "build": "turbo build",
+    "preview": "turbo run preview --parallel --continue",
+    "check-types": "turbo run check-types --parallel",
     "format": "prettier --write '**/*.ts'",
     "lint": "turbo lint",
     "test": "echo \"Error: no test specified\" && exit 0",
-    "prepare": "husky"
+    "prepare": "[ -z \"$CI\" ] && husky || true"
   },
   "license": "MIT",
   "engines": {
-    "node": "24.x",
-    "pnpm": "10.x"
+    "node": ">=22.x",
+    "pnpm": ">=8.x"
   },
   "keywords": [],
   "author": "",
   "packageManager": "pnpm@10.24.0",
   "devDependencies": {
+    "@commitlint/cli": "^20.5.2",
+    "@commitlint/config-conventional": "^20.5.0",
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",

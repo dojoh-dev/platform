@@ -10,9 +10,6 @@ export default defineConfig({
   plugins: [
     react({
       jsxRuntime: 'automatic',
-      babel: {
-        plugins: ['styled-jsx/babel'],
-      },
     }),
   ],
   resolve: {
@@ -24,22 +21,21 @@ export default defineConfig({
     port: 4000,
     cors: true,
   },
+  define: {
+    'process.env': {},
+  },
   build: {
     target: 'esnext',
-    ssr: './lib/entry-server.tsx',
+    cssCodeSplit: false,
     lib: {
-      entry: './lib/entry-client.tsx',
-      name: 'Challenge',
-      fileName: () => 'entry-client.js',
+      entry: path.resolve(__dirname, 'lib/entry-client.tsx'),
       formats: ['es'],
     },
+    outDir: 'dist',
+    emptyOutDir: true,
     rollupOptions: {
-      external: ['react', 'react-dom'],
       output: {
-        globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM',
-        },
+        entryFileNames: 'lib/entry-client.mjs',
       },
     },
   },

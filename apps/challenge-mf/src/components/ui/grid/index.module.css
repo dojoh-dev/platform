@@ -1,0 +1,25 @@
+.grid {
+  display: grid;
+  grid-template:
+    'summary gutter-x code'
+    'summary gutter-x gutter-y'
+    'summary gutter-x test-runner';
+  grid-template-columns: 1fr 4px 1fr;
+  grid-template-rows: 1fr 4px 250px;
+  height: 100%;
+  padding: 10px;
+  gap: 4px;
+}
+
+.gutter {
+  user-select: none;
+  transition:
+    background-color 150ms ease,
+    box-shadow 150ms ease;
+  transition-delay: 300ms;
+  opacity: 0.85;
+
+  &:hover {
+    background-color: var(--primary-color);
+  }
+}

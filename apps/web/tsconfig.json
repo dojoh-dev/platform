@@ -1,8 +1,9 @@
 {
   "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
+    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "bundler",
     "lib": ["DOM", "ESNext"],
     "rootDir": ".",
     "baseUrl": ".",

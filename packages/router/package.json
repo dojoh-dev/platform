@@ -13,13 +13,11 @@
   },
   "scripts": {
     "watch": "tsgo --watch",
-    "build": "tsgo",
+    "build": "tsgo -P tsconfig.build.json",
     "lint": "eslint src/ --fix --ext .ts"
   },
-  "dependencies": {
-    "@typescript/native-preview": "7.0.0-dev.20260223.1"
-  },
   "devDependencies": {
+    "@typescript/native-preview": "7.0.0-dev.20260223.1",
     "eslint": "^10.0.2",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"

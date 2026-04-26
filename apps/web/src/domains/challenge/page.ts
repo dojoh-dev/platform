@@ -6,8 +6,12 @@ effect(async () => {
   const container = document.querySelector('#challenge-page');
 
   if (container) {
-    const { mountApp } =
-      await import('http://localhost:4000/lib/entry-client.tsx');
+    const isDev = import.meta.env.DEV;
+    const url = isDev
+      ? 'http://localhost:4000/lib/entry-client.tsx'
+      : '/challenge-mf/lib/entry-client.mjs';
+
+    const { mountApp } = await import(url);
     mountApp(container, {
       matchId: 'abc123',
     });

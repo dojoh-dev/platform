@@ -1,5 +1,5 @@
 {
-  "name": "platform.dojoh.dev",
+  "name": "@dojoh-dev/platform",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,7 +7,8 @@
   "scripts": {
     "dev": "vite dev --port 3000",
     "build": "vite build",
-    "preview": "vite preview",
+    "preview": "vite preview --port 3000",
+    "check-types": "tsc --noEmit",
     "lint": "eslint src/ --fix --ext .ts,.tsx"
   },
   "license": "MIT",
@@ -19,16 +20,16 @@
   "author": "",
   "packageManager": "pnpm@10.24.0",
   "devDependencies": {
-    "@types/node": "^24.10.13",
-    "typescript": "~5.9.3",
-    "eslint": "^10.0.2",
-    "@vitejs/plugin-react": "^5.1.4",
     "@repo/eslint-config": "workspace:*",
-    "@repo/typescript-config": "workspace:*"
+    "@repo/typescript-config": "workspace:*",
+    "@types/node": "^24.10.13",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "^10.0.2",
+    "typescript": "~5.9.3"
   },
   "dependencies": {
-    "@repo/shared": "workspace:*",
     "@repo/router": "workspace:*",
+    "@repo/shared": "workspace:*",
     "vite": "^7.0.0"
   }
 }

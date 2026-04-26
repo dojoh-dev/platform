@@ -3,15 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "tsgo -p tsconfig.build.json",
     "lint": "eslint src/ --fix --ext .ts"
   },
   "exports": {
     "./styles/*.css": "./src/styles/*.css",
-    "./double-dollar": "./src/lib/double-dollar.ts",
-    "./stateful": "./src/lib/stateful.ts"
+    "./double-dollar": "./dist/lib/double-dollar.js",
+    "./stateful": "./dist/lib/stateful.js"
   },
   "devDependencies": {
     "eslint": "^10.0.2",
+    "@typescript/native-preview": "7.0.0-dev.20260223.1",
     "@repo/eslint-config": "workspace:*",
     "@repo/typescript-config": "workspace:*"
   }

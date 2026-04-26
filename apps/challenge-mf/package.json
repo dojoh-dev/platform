@@ -1,5 +1,5 @@
 {
-  "name": "challenge",
+  "name": "@dojoh-dev/challenge-mf",
   "scripts": {
     "dev": "vite dev --port 4000",
     "build": "tsc && vite build",
@@ -7,12 +7,14 @@
     "check-types": "tsc --noEmit",
     "lint": "eslint src/ --fix --ext .ts,.tsx"
   },
+  "sideEffects": [
+    "**/*.css"
+  ],
   "dependencies": {
     "@repo/shared": "workspace:*",
     "lucide-react": "^0.575.0",
     "react": "19.x",
     "react-dom": "19.x",
-    "styled-jsx": "^5.1.7",
     "vite": "^7.0.0"
   },
   "devDependencies": {

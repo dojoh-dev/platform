@@ -7,16 +7,6 @@ import type {
   XRoute,
 } from './types';
 
-export type {
-  CookieOptions,
-  HistoryMode,
-  RouterOptions,
-  XMiddleware,
-  XRequest,
-  XRoute,
-  XNext,
-} from './types';
-
 let globalRouter: RouterOptions = {
   history: {
     type: 'web',
@@ -237,3 +227,13 @@ export const createWebHistory = (): HistoryMode => {
     type: 'web',
   };
 };
+
+export type {
+  CookieOptions,
+  HistoryMode,
+  RouterOptions,
+  XMiddleware,
+  XRequest,
+  XRoute,
+  XNext,
+} from './types';

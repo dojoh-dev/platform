@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import $$ from '@repo/shared/double-dollar';
+import styles from './index.module.css';
 
 const MIN_WIDTH = window.innerWidth * 0.25; // 25% of the viewport width
 const MIN_HEIGHT = 200;
@@ -94,49 +95,18 @@ export default function Grid({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <>
-      <div id="grid">
-        {children}
-        <div id="gutterY" className="gutter gutter-y" />
-        <div id="gutterX" className="gutter gutter-x" />
-      </div>
-      <style jsx>{`
-        #grid {
-          display: grid;
-          grid-template:
-            'summary gutter-x code'
-            'summary gutter-x gutter-y'
-            'summary gutter-x test-runner';
-          grid-template-columns: 1fr 4px 1fr;
-          grid-template-rows: 1fr 4px 250px;
-          height: 100%;
-          padding: 10px;
-          gap: 4px;
-        }
-
-        #gutterX {
-          grid-area: gutter-x;
-          cursor: col-resize;
-        }
-
-        #gutterY {
-          grid-area: gutter-y;
-          cursor: row-resize;
-        }
-
-        .gutter {
-          user-select: none;
-          transition:
-            background-color 150ms ease,
-            box-shadow 150ms ease;
-          transition-delay: 300ms;
-          opacity: 0.85;
-        }
-
-        .gutter:hover {
-          background-color: var(--primary-color);
-        }
-      `}</style>
-    </>
+    <div id="grid" className={styles.grid}>
+      {children}
+      <span
+        id="gutterY"
+        className={styles.gutter}
+        style={{ gridArea: 'gutter-y', cursor: 'row-resize' }}
+      />
+      <span
+        id="gutterX"
+        className={styles.gutter}
+        style={{ gridArea: 'gutter-x', cursor: 'col-resize' }}
+      />
+    </div>
   );
 }
