@@ -18,7 +18,7 @@
   /* Typography */
   --font-sans: 'Public Sans', sans-serif;
   --font-mono: 'Google Sans Code', monospace;
-  --font-sans-serif: 'Trocchi', serif;
+  --font-serif: 'Trocchi', serif;
   --font-xs: 0.75rem;
   --font-sm: 0.875rem;
   --font-md: 1rem;
@@ -26,6 +26,8 @@
   --font-xl: 1.5rem;
   --font-2xl: 2rem;
   --line-height: 1.5;
+
+  --t-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 *,
