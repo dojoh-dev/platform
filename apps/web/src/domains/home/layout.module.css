@@ -24,7 +24,7 @@
       width: max-content;
       font-size: var(--font-lg);
       font-weight: 400;
-      font-family: var(--font-sans-serif);
+      font-family: var(--font-serif);
       color: #fff;
 
       span {

@@ -19,6 +19,40 @@ button {
   }
 }
 
+a[role='button'] {
+  font-size: var(--font-sm);
+  font-family: var(--font-sans);
+  border-radius: var(--radii);
+  padding-inline: 10px;
+  padding-block: 8px;
+  cursor: pointer;
+  border: none;
+  transition:
+    opacity 200ms ease,
+    transform 100ms ease;
+
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.975);
+  }
+}
+
+a[variant='solid'][role='button'] {
+  background-color: var(--foreground-color);
+  color: var(--black-color);
+}
+
+a[variant='outline'][role='button'] {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+
 button[variant='outline'] {
   background-color: transparent;
   border: 1px solid var(--border-color);
