@@ -9,7 +9,11 @@
   --foreground-color: hsl(0, 0%, 94%);
   --background-color: hsl(0, 0%, 4%);
   --border-color: hsl(0, 0%, 24%);
+
   --black-color: hsl(0, 0%, 13%);
+  --white-color: hsl(0, 0%, 100%);
+  --grey-color: hsl(0, 0%, 74.12%);
+  --grey-600-color: hsl(0, 0%, 29%);
 
   /* Layout */
   --radii: 10px;

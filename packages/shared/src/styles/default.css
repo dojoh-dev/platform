@@ -1,4 +1,4 @@
-button {
+button[data-preset='default'] {
   font-size: var(--font-sm);
   font-family: var(--font-sans);
   border-radius: var(--radii);
@@ -19,7 +19,7 @@ button {
   }
 }
 
-a[role='button'] {
+a[role='button'][data-preset='default'] {
   font-size: var(--font-sm);
   font-family: var(--font-sans);
   border-radius: var(--radii);
