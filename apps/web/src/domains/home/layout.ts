@@ -20,14 +20,14 @@ export default function () {
 				<a
 					role="button"
 					variant="outline"
-					href="/login#access"
+					href="/login#log-in"
 				>
 						Login
 				</a>
 				<a
 					role="button"
 					variant="solid"
-					href="/login#create"
+					href="/login#sign-up"
 				>
 						Get started
 				</a>
