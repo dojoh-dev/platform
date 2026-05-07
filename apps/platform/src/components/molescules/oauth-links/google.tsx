@@ -1,9 +1,9 @@
 import { createSignal, Show } from 'solid-js';
 
 import Spinner from '@/components/ui/spinner';
+import env from '@/lib/env';
 
 import styles from './index.module.css';
-import env from '@/lib/env';
 
 export default function GoogleOAuthLink() {
   const [submitting, setSubmitting] = createSignal(false);

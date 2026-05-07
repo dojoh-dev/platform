@@ -1,17 +1,17 @@
-import z from 'zod';
-import { CheckIcon, EyeClosedIcon, EyeIcon } from 'lucide-solid';
 import { createEffect, createSignal, Show } from 'solid-js';
-import { useNavigate } from '@solidjs/router';
 import { encryptText, shakeElement } from '@repo/shared/anim';
-import { $$ } from '@repo/shared/dom';
 import { wait } from '@repo/shared/clock';
+import { $$ } from '@repo/shared/dom';
+import { useNavigate } from '@solidjs/router';
+import { CheckIcon, EyeClosedIcon, EyeIcon } from 'lucide-solid';
+import z from 'zod';
 
-import GoogleOAuthLink from '@/components/molescules/oauth-links/google';
-import GithubOAuthLink from '@/components/molescules/oauth-links/github';
 import DiscordOAuthLink from '@/components/molescules/oauth-links/discord';
+import GithubOAuthLink from '@/components/molescules/oauth-links/github';
+import GoogleOAuthLink from '@/components/molescules/oauth-links/google';
 import Spinner from '@/components/ui/spinner';
-import { cookies } from '@/lib/helpers/cookies';
 import { CookieKeys } from '@/lib/constants';
+import { cookies } from '@/lib/helpers/cookies';
 import authService from '@/services/auth.service';
 
 import styles from './index.module.css';

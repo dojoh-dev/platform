@@ -1,15 +1,17 @@
 /* @refresh reload */
 import { lazy } from 'solid-js';
-import { type MountableElement, render } from 'solid-js/web';
+import { render } from 'solid-js/web';
 import { RouteDefinition, Router } from '@solidjs/router';
+
 import 'solid-devtools';
+
+import type { MountableElement } from 'solid-js/web';
 
 import '@repo/shared/stylesheets/reset.css';
 import '@repo/shared/stylesheets/default.css';
 import '@repo/shared/stylesheets/variables.css';
 import '@repo/shared/stylesheets/typo.css';
 import '@repo/shared/stylesheets/animations.css';
-
 import './styles.css';
 
 const root = document.getElementById('root') as MountableElement;
