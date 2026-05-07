@@ -1,0 +1,118 @@
+:root {
+  /* Fixed colors */
+  --primary-color: hsl(260deg 100% 68%);
+  --secondary-color: hsl(0deg 0% 55%);
+  --foreground-color: hsl(0, 0%, 94%);
+  --background-color: hsl(0, 0%, 4%);
+  --border-color: hsl(0, 0%, 24%);
+
+  --black-color: hsl(0, 0%, 13%);
+  --white-color: hsl(0, 0%, 100%);
+  --grey-color: hsl(0, 0%, 74.12%);
+
+  /* Grey colors */
+  --grey-100-color: hsl(0, 0%, 95%);
+  --grey-200-color: hsl(0, 0%, 90%);
+  --grey-300-color: hsl(0, 0%, 80%);
+  --grey-400-color: hsl(0, 0%, 70%);
+  --grey-500-color: hsl(0, 0%, 50%);
+  --grey-600-color: hsl(0, 0%, 40%);
+  --grey-700-color: hsl(0, 0%, 30%);
+  --grey-800-color: hsl(0, 0%, 20%);
+  --grey-900-color: hsl(0, 0%, 10%);
+
+  /* Red colors */
+  --red-100-color: hsl(0, 100%, 95%);
+  --red-200-color: hsl(0, 100%, 90%);
+  --red-300-color: hsl(0, 100%, 80%);
+  --red-400-color: hsl(0, 100%, 70%);
+  --red-500-color: hsl(0, 100%, 50%);
+  --red-600-color: hsl(0, 100%, 40%);
+  --red-700-color: hsl(0, 100%, 30%);
+  --red-800-color: hsl(0, 100%, 20%);
+  --red-900-color: hsl(0, 100%, 10%);
+
+  /* Orange colors */
+  --orange-100-color: hsl(30, 100%, 95%);
+  --orange-200-color: hsl(30, 100%, 90%);
+  --orange-300-color: hsl(30, 100%, 80%);
+  --orange-400-color: hsl(30, 100%, 70%);
+  --orange-500-color: hsl(30, 100%, 50%);
+  --orange-600-color: hsl(30, 100%, 40%);
+  --orange-700-color: hsl(30, 100%, 30%);
+  --orange-800-color: hsl(30, 100%, 20%);
+  --orange-900-color: hsl(30, 100%, 10%);
+
+  /* Yellow colors */
+  --yellow-100-color: hsl(60, 100%, 95%);
+  --yellow-200-color: hsl(60, 100%, 90%);
+  --yellow-300-color: hsl(60, 100%, 80%);
+  --yellow-400-color: hsl(60, 100%, 70%);
+  --yellow-500-color: hsl(60, 100%, 50%);
+  --yellow-600-color: hsl(60, 100%, 40%);
+  --yellow-700-color: hsl(60, 100%, 30%);
+  --yellow-800-color: hsl(60, 100%, 20%);
+  --yellow-900-color: hsl(60, 100%, 10%);
+
+  /* Green colors */
+  --green-100-color: hsl(120, 100%, 95%);
+  --green-200-color: hsl(120, 100%, 90%);
+  --green-300-color: hsl(120, 100%, 80%);
+  --green-400-color: hsl(120, 100%, 70%);
+  --green-500-color: hsl(120, 100%, 40%);
+  --green-600-color: hsl(120, 100%, 30%);
+  --green-700-color: hsl(120, 100%, 20%);
+  --green-800-color: hsl(120, 100%, 15%);
+  --green-900-color: hsl(120, 100%, 10%);
+
+  /* Blue colors */
+  --blue-100-color: hsl(240, 100%, 95%);
+  --blue-200-color: hsl(240, 100%, 90%);
+  --blue-300-color: hsl(240, 100%, 80%);
+  --blue-400-color: hsl(240, 100%, 70%);
+  --blue-500-color: hsl(240, 100%, 50%);
+  --blue-600-color: hsl(240, 100%, 40%);
+  --blue-700-color: hsl(240, 100%, 30%);
+  --blue-800-color: hsl(240, 100%, 20%);
+  --blue-900-color: hsl(240, 100%, 10%);
+
+  /* Indigo colors */
+  --indigo-100-color: hsl(270, 100%, 95%);
+  --indigo-200-color: hsl(270, 100%, 90%);
+  --indigo-300-color: hsl(270, 100%, 80%);
+  --indigo-400-color: hsl(270, 100%, 70%);
+  --indigo-500-color: hsl(270, 100%, 50%);
+  --indigo-600-color: hsl(270, 100%, 40%);
+  --indigo-700-color: hsl(270, 100%, 30%);
+  --indigo-800-color: hsl(270, 100%, 20%);
+  --indigo-900-color: hsl(270, 100%, 10%);
+
+  /* Violet colors */
+  --violet-100-color: hsl(300, 100%, 95%);
+  --violet-200-color: hsl(300, 100%, 90%);
+  --violet-300-color: hsl(300, 100%, 80%);
+  --violet-400-color: hsl(300, 100%, 70%);
+  --violet-500-color: hsl(300, 100%, 50%);
+  --violet-600-color: hsl(300, 100%, 40%);
+  --violet-700-color: hsl(300, 100%, 30%);
+  --violet-800-color: hsl(300, 100%, 20%);
+  --violet-900-color: hsl(300, 100%, 10%);
+
+  /* Layout */
+  --radii: 10px;
+  --spacing: 10px;
+
+  /* Typography */
+  --font-sans: 'Public Sans', sans-serif;
+  --font-mono: 'Google Sans Code', monospace;
+  --font-serif: 'Trocchi', serif;
+  --font-xs: 0.75rem;
+  --font-sm: 0.875rem;
+  --font-md: 1rem;
+  --font-lg: 1.25rem;
+  --font-xl: 1.5rem;
+  --font-2xl: 2rem;
+  --line-height: 1.5;
+
+  --t-bounce: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

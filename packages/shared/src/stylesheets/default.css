@@ -1,0 +1,104 @@
+button[data-preset='default'] {
+  font-size: var(--font-sm);
+  font-family: var(--font-sans);
+  border-radius: var(--radii);
+  padding-inline: 10px;
+  padding-block: 8px;
+  cursor: pointer;
+  border: none;
+  transition:
+    opacity 200ms ease,
+    transform 100ms ease;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.975);
+  }
+}
+
+a[role='button'][data-preset='default'] {
+  font-size: var(--font-sm);
+  font-family: var(--font-sans);
+  border-radius: var(--radii);
+  padding-inline: 10px;
+  padding-block: 8px;
+  cursor: pointer;
+  border: none;
+  transition:
+    opacity 200ms ease,
+    transform 100ms ease;
+
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    transform: scale(0.975);
+  }
+}
+
+a[variant='solid'][role='button'] {
+  background-color: var(--foreground-color);
+  color: var(--black-color);
+}
+
+a[variant='outline'][role='button'] {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+
+button[variant='outline'] {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--foreground-color);
+}
+
+button.icon-button {
+  aspect-ratio: 1/1;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  color: var(--foreground-color);
+  border-radius: var(--radii);
+  transition: background 200ms ease;
+
+  &:hover {
+    background: rgb(255 255 255 / 10%);
+  }
+}
+
+button[aria-invalid='true'] {
+  animation: shake 600ms ease;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgb(255 255 255 / 10%);
+  border-radius: 100px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 100px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}

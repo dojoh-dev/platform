@@ -1,0 +1,56 @@
+.oauthButton {
+  background-color: transparent;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 10px 8px 10px;
+
+  width: 100%;
+  height: 40px;
+
+  border-radius: var(--radii);
+  border: 1px solid var(--grey-600-color);
+
+  color: var(--foreground-color);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+
+  transition: background-color 200ms linear;
+
+  div[aria-label] {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url('/social-media.png');
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+  }
+
+  &:hover {
+    background-color: rgb(255 255 255 / 10%);
+  }
+}
+
+.oauthButton[data-provider='google'] {
+  div[aria-label] {
+    background-position: 0 0;
+  }
+}
+
+.oauthButton[data-provider='github'] {
+  div[aria-label] {
+    background-position: -16px 0;
+  }
+}
+
+.oauthButton[data-provider='discord'] {
+  div[aria-label] {
+    background-position: 0 -16px;
+  }
+}

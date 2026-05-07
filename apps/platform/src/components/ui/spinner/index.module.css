@@ -1,0 +1,148 @@
+.loader {
+  width: 3px;
+  height: 3px;
+  background: var(--white-color);
+  color: var(--white-color);
+  box-shadow:
+    -5px -3px var(--white-color),
+    0 -3px var(--white-color),
+    5px -3px var(--white-color),
+    -5px 0 var(--white-color),
+    5px 0 var(--white-color),
+    -5px 3px var(--white-color),
+    0 3px var(--white-color),
+    5px 3px var(--white-color),
+    -5px 5px var(--white-color),
+    0 5px var(--white-color),
+    5px 5px var(--white-color);
+  animation: l29 2s infinite;
+}
+
+@keyframes l29 {
+  10% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px var(--white-color),
+      5px -3px var(--white-color),
+      -5px 0 var(--white-color),
+      5px 0 var(--white-color),
+      -5px 3px transparent,
+      0 3px var(--white-color),
+      5px 3px transparent,
+      -5px 5px var(--white-color),
+      0 5px var(--white-color),
+      5px 5px var(--white-color);
+  }
+  20% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px var(--white-color),
+      5px -3px var(--white-color),
+      -5px 0 var(--white-color),
+      5px 0 var(--white-color),
+      -5px 3px var(--white-color),
+      0 3px var(--white-color),
+      5px 3px transparent,
+      -5px 5px transparent,
+      0 5px var(--white-color),
+      5px 5px var(--white-color);
+  }
+  30% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px transparent,
+      5px -3px var(--white-color),
+      -5px 0 transparent,
+      5px 0 var(--white-color),
+      -5px 3px var(--white-color),
+      0 3px transparent,
+      5px 3px var(--white-color),
+      -5px 5px transparent,
+      0 5px var(--white-color),
+      5px 5px transparent;
+  }
+  40% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px var(--white-color),
+      5px -3px var(--white-color),
+      -5px 0 transparent,
+      5px 0 transparent,
+      -5px 3px var(--white-color),
+      0 3px var(--white-color),
+      5px 3px var(--white-color),
+      -5px 5px var(--white-color),
+      0 5px var(--white-color),
+      5px 5px var(--white-color);
+  }
+  50% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px var(--white-color),
+      5px -3px var(--white-color),
+      -5px 0 var(--white-color),
+      5px 0 transparent,
+      -5px 3px transparent,
+      0 3px var(--white-color),
+      5px 3px var(--white-color),
+      -5px 5px var(--white-color),
+      0 5px var(--white-color),
+      5px 5px var(--white-color);
+  }
+  60% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px transparent,
+      5px -3px var(--white-color),
+      -5px 0 var(--white-color),
+      5px 0 var(--white-color),
+      -5px 3px transparent,
+      0 3px var(--white-color),
+      5px 3px var(--white-color),
+      -5px 5px transparent,
+      0 5px var(--white-color),
+      5px 5px var(--white-color);
+  }
+  70% {
+    box-shadow:
+      -5px -3px var(--white-color),
+      0 -3px transparent,
+      5px -3px transparent,
+      -5px 0 var(--white-color),
+      5px 0 var(--white-color),
+      -5px 3px var(--white-color),
+      0 3px var(--white-color),
+      5px 3px var(--white-color),
+      -5px 5px transparent,
+      0 5px var(--white-color),
+      5px 5px var(--white-color);
+  }
+  80% {
+    box-shadow:
+      -5px -3px transparent,
+      0 -3px var(--white-color),
+      5px -3px var(--white-color),
+      -5px 0 var(--white-color),
+      5px 0 var(--white-color),
+      -5px 3px var(--white-color),
+      0 3px var(--white-color),
+      5px 3px var(--white-color),
+      -5px 5px var(--white-color),
+      0 5px var(--white-color),
+      5px 5px transparent;
+  }
+  90% {
+    box-shadow:
+      -5px -3px transparent,
+      0 -3px var(--white-color),
+      5px -3px var(--white-color),
+      -5px 0 var(--white-color),
+      5px 0 var(--white-color),
+      -5px 3px var(--white-color),
+      0 3px transparent,
+      5px 3px var(--white-color),
+      -5px 5px var(--white-color),
+      0 5px var(--white-color),
+      5px 5px transparent;
+  }
+}

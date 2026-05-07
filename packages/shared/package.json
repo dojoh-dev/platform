@@ -7,9 +7,19 @@
     "lint": "eslint src/ --fix --ext .ts"
   },
   "exports": {
-    "./styles/*.css": "./src/styles/*.css",
-    "./double-dollar": "./dist/lib/double-dollar.js",
-    "./stateful": "./dist/lib/stateful.js"
+    "./stylesheets/*.css": "./src/stylesheets/*.css",
+    "./anim": {
+      "types": "./src/lib/anim.ts",
+      "default": "./dist/lib/anim.js"
+    },
+    "./clock": {
+      "types": "./src/lib/clock.ts",
+      "default": "./dist/lib/clock.js"
+    },
+    "./dom": {
+      "types": "./src/lib/dom.ts",
+      "default": "./dist/lib/dom.js"
+    }
   },
   "devDependencies": {
     "eslint": "^10.0.2",

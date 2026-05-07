@@ -1,0 +1,35 @@
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    // General
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "target": "ESNext",
+    "module": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+
+    // Modules
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
+    "noEmit": true,
+    "experimentalDecorators": true,
+    "useDefineForClassFields": false,
+    "skipLibCheck": true,
+
+    // Type Checking & Safety
+    "strict": true,
+    "types": ["vite/client"],
+
+    // Path Mapping
+    "rootDir": ".",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@types/*": ["./@types/*"],
+    },
+  },
+  "include": ["src", "pages", "@types/**/*.d.ts"],
+  "exclude": ["node_modules", "dist"],
+}
