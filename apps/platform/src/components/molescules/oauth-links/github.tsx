@@ -1,7 +1,9 @@
-import Spinner from '@/components/ui/spinner';
-import styles from './index.module.css';
 import { createSignal, Show } from 'solid-js';
+
+import Spinner from '@/components/ui/spinner';
 import env from '@/lib/env';
+
+import styles from './index.module.css';
 
 export default function GithubOAuthLink() {
   const [submitting, setSubmitting] = createSignal(false);
