@@ -4,25 +4,18 @@
   "trailingComma": "es5",
   "singleQuote": true,
   "plugins": ["@ianvs/prettier-plugin-sort-imports"],
-  "importOrderParserPlugins": [
-    "typescript",
-    "decorators"
-  ],
+  "importOrderParserPlugins": ["typescript", "decorators"],
   "importOrder": [
     "<BUILTIN_MODULES>",
     "<THIRD_PARTY_MODULES>",
+    "^@repo/(.*)$",
     "",
+    "^@/(?!.*\\?import$)(.*)$",
+    "",
+    "^[.](?!.*\\.css$)",
     "<TYPES>",
-    "^@bootstrap/(.*)$",
-    "^@config/(.*)$",
-    "^@controllers/(.*)$",
-    "^@database/(.*)$",
-    "^@core/(.*)$",
-    "^@exceptions/(.*)$",
-    "^@lib/(.*)$",
-    "^@routes/(.*)$",
-    "^@validations/(.*)$",
     "",
-    "^[.]"
+    "\\?import$",
+    "^.*\\.css$"
   ]
 }
