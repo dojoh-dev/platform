@@ -5,7 +5,16 @@ FROM base AS builder
 COPY package.json pnpm-lock.yaml ./
 ENV CI=true
 COPY . ./
-ENV NODE_ENV=production
+
+ARG NODE_ENV=production
+ARG TURBO_TELEMETRY_DISABLED=1
+ARG VITE_API_BASE_URL=http://127.0.0.1:8080
+ARG DO_NOT_TRACK=1
+ENV NODE_ENV=${NODE_ENV} \
+	TURBO_TELEMETRY_DISABLED=${TURBO_TELEMETRY_DISABLED} \
+	VITE_API_BASE_URL=${VITE_API_BASE_URL} \
+	DO_NOT_TRACK=${DO_NOT_TRACK}
+
 RUN npm add -g pnpm && pnpm install --frozen-lockfile && \
 	npm run build && \
 	find . -type f -name "*.ts" -delete && \
