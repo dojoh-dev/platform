@@ -55,6 +55,7 @@ jobs:
       - name: Checkout Head
         uses: actions/checkout@v4
         with:
+          lfs: true
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Set-up Build-time env file
