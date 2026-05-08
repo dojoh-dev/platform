@@ -57,6 +57,12 @@ jobs:
         with:
           ref: ${{ github.event.pull_request.head.sha }}
 
+      - name: Set-up Build-time env file
+        run: |
+          echo "${PR_ENV}" > .env
+        env:
+          PR_ENV: ${{ vars[format('PR_{0}', github.event.pull_request.number)] }}
+
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
@@ -73,7 +79,15 @@ jobs:
 
       - name: Build Image
         run: |
-          docker build -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO }}/${{ env.IMAGE }}:${{ github.event.pull_request.number }} -f ci/Dockerfile .
+          set -a
+          source .env
+          set +a
+
+          docker build \
+            --build-arg NODE_ENV="$NODE_ENV" \
+            --build-arg VITE_API_BASE_URL="$VITE_API_BASE_URL" \
+            -t ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPO }}/${{ env.IMAGE }}:${{ github.event.pull_request.number }} \
+            -f ci/Dockerfile .
 
       - name: Push Image
         run: |
