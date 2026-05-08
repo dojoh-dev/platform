@@ -1,9 +1,9 @@
-import { createEffect, createSignal, Show } from 'solid-js';
+import { createEffect, createSignal, onMount, Show } from 'solid-js';
 import { encryptText, shakeElement } from '@repo/shared/anim';
 import { wait } from '@repo/shared/clock';
 import { $$ } from '@repo/shared/dom';
 import { useNavigate } from '@solidjs/router';
-import { CheckIcon, EyeClosedIcon, EyeIcon } from 'lucide-solid';
+import { BanIcon, CheckIcon, EyeClosedIcon, EyeIcon } from 'lucide-solid';
 import z from 'zod';
 
 import DiscordOAuthLink from '@/components/molescules/oauth-links/discord';
@@ -11,6 +11,7 @@ import GithubOAuthLink from '@/components/molescules/oauth-links/github';
 import GoogleOAuthLink from '@/components/molescules/oauth-links/google';
 import Spinner from '@/components/ui/spinner';
 import { CookieKeys } from '@/lib/constants';
+import { RequestError } from '@/lib/exceptions/fetch.exceptions';
 import { cookies } from '@/lib/helpers/cookies';
 import authService from '@/services/auth.service';
 
@@ -54,6 +55,7 @@ export default () => {
   if (authorized) {
     // You shouldn't be here if you're already logged in
     navigate('/-/home', { replace: true });
+    return <></>;
   }
 
   const togglePasswordVisibility = () => {
@@ -226,15 +228,43 @@ export default () => {
     });
   });
 
+  // Check for oauth failures
+  onMount(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const error = urlParams.get('error');
+    const errorCode = urlParams.get('error_code');
+    const reason = urlParams.get('reason');
+    const provider = urlParams.get('provider');
+
+    if (error === 'oauth_failed') {
+      setException({
+        enabled: true,
+        type: 'error',
+        title: `OAuth Failed (${provider}: 0x${Number(errorCode).toString(16)})`,
+        message: reason
+          ? `Reason: "${reason}". Please try again or <a href="mailto:support@dojoh.dev">connect us</a> if the problem persists.`
+          : 'Please try again or <a href="mailto:support@dojoh.dev>connect us</a> if the problem persists.',
+      });
+    }
+  });
+
   const [errors, setErrors] = createSignal<{ [key: string]: string }>({
     password: '',
     identifier: '',
   });
 
   const [submitting, setSubmitting] = createSignal(false);
+  const [exception, setException] = createSignal({
+    enabled: false,
+    type: '' as 'error' | 'success' | 'info',
+    title: '',
+    message: '',
+  });
 
   const handleSubmit = async (e: Event) => {
     e.preventDefault();
+
+    setException((prev) => ({ ...prev, enabled: false }));
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
@@ -281,7 +311,8 @@ export default () => {
       }
 
       await authService.logIn({
-        ...validation.data,
+        identifier: validation.data.identifier,
+        password: validation.data.password,
         rememberMe: validation.data['remember-me'] === 'on',
       });
 
@@ -289,7 +320,20 @@ export default () => {
     } catch (e) {
       const err = e as Error;
       // Handle login error (e.g., show error message)
-      alert('Sign-up or login failed: ' + err.message);
+
+      if (err instanceof RequestError) {
+        setException({
+          enabled: true,
+          type: 'error',
+          title: (err.response as { error?: string })?.error || 'Login failed',
+          message:
+            'Please check your credentials and try again, if the problem persists, ' +
+            `<a href = "mailto:support@dojoh.dev">contact support</a>.`,
+        });
+      }
+
+      const button = $$<HTMLButtonElement>('#submit');
+      shakeElement(button);
     } finally {
       setSubmitting(false);
     }
@@ -358,6 +402,20 @@ export default () => {
           data-type={hashKey.slice(1)}
           on:submit={handleSubmit}
         >
+          {exception().enabled && (
+            <div
+              role="alert"
+              class={styles.exception}
+              data-type={exception().type}
+            >
+              <span>
+                <BanIcon size={16} color="hsl(0deg 89.19% 59.86%)" />
+                <b>{exception().title}</b>
+              </span>
+              <p innerHTML={exception().message}></p>
+            </div>
+          )}
+
           <div class={styles.inputGroup}>
             <label for="identifier">Username</label>
             <div>

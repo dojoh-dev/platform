@@ -1,5 +1,6 @@
 import { CookieKeys } from '@/lib/constants';
 import env from '@/lib/env';
+import { RequestError } from '@/lib/exceptions/fetch.exceptions';
 import { cookies } from '@/lib/helpers/cookies';
 
 export default {
@@ -22,7 +23,17 @@ export default {
 		});
 
 		if (!response.ok) {
-			throw new Error('Failed to log in');
+			const json = await response.json();
+			const e = new RequestError({
+				message: 'Failed to log in',
+				status: response.status,
+				statusText: response.statusText,
+				url: url.toString(),
+				method: 'POST',
+				body: crendentials,
+				response: json,
+			});
+			throw e;
 		}
 
 		const data = await response.json();
