@@ -13,7 +13,7 @@ export class RequestError extends Error {
 		url,
 		method,
 		response,
-		// message = 'Request failed',
+		message,
 	}: {
 		status: number;
 		statusText: string;
@@ -23,7 +23,8 @@ export class RequestError extends Error {
 		response?: unknown;
 		message?: string;
 	}) {
-		super(`Request failed with status ${status}: ${statusText}`);
+		super(message || `Request failed with status ${status}: ${statusText}`);
+		this.name = 'RequestError';
 
 		this.status = status;
 		this.statusText = statusText;
