@@ -17,28 +17,28 @@ import './styles.css';
 const root = document.getElementById('root') as MountableElement;
 
 if (import.meta.env.DEV && !root) {
-  throw new Error('Root element not found.');
+	throw new Error('Root element not found.');
 }
 
 const routes = [
-  {
-    path: '/',
-    component: lazy(() => import('../pages/login')),
-  },
-  {
-    path: '/-',
-    component: lazy(() => import('../pages/-/layout')),
-    children: [
-      {
-        path: '/home',
-        component: lazy(() => import('../pages/-/home')),
-      },
-      {
-        path: '/game',
-        component: lazy(() => import('../pages/-/game')),
-      },
-    ],
-  },
+	{
+		path: '/',
+		component: lazy(() => import('../pages/login')),
+	},
+	{
+		path: '/-',
+		component: lazy(() => import('../pages/-/layout')),
+		children: [
+			{
+				path: '/home',
+				component: lazy(() => import('../pages/-/home')),
+			},
+			{
+				path: '/game',
+				component: lazy(() => import('../pages/-/game')),
+			},
+		],
+	},
 ] satisfies RouteDefinition[];
 
 render(() => <Router>{routes}</Router>, root);

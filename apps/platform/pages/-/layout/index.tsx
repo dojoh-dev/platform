@@ -7,21 +7,21 @@ import { cookies } from '@/lib/helpers/cookies';
 import type { JSX } from 'solid-js';
 
 export default (props: { children?: JSX.Element }) => {
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 
-  const unauthorized = cookies.get(CookieKeys.Session) === undefined;
+	const unauthorized = cookies.get(CookieKeys.Session) === undefined;
 
-  if (unauthorized) {
-    navigate('/', { replace: true });
-    return <div>Redirecting...</div>;
-  }
+	if (unauthorized) {
+		navigate('/', { replace: true });
+		return <div>Redirecting...</div>;
+	}
 
-  return (
-    <Show when={!unauthorized}>
-      <section>
-        <h1>Layout page!</h1>
-        {props.children}
-      </section>
-    </Show>
-  );
+	return (
+		<Show when={!unauthorized}>
+			<section>
+				<h1>Layout page!</h1>
+				{props.children}
+			</section>
+		</Show>
+	);
 };

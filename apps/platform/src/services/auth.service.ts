@@ -4,7 +4,7 @@ import { RequestError } from '@/lib/exceptions/fetch.exceptions';
 import { cookies } from '@/lib/helpers/cookies';
 
 export default {
-	async logIn(crendentials: {
+	async logIn(credentials: {
 		identifier: string;
 		password: string;
 		rememberMe: boolean;
@@ -19,7 +19,7 @@ export default {
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			body: JSON.stringify(crendentials),
+			body: JSON.stringify(credentials),
 		});
 
 		if (!response.ok) {
@@ -30,7 +30,7 @@ export default {
 				statusText: response.statusText,
 				url: url.toString(),
 				method: 'POST',
-				body: crendentials,
+				body: credentials,
 				response: json,
 			});
 			throw e;
@@ -54,8 +54,8 @@ export default {
 			expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), // 7 days
 		});
 
-		if (crendentials.rememberMe) {
-			// This usually means setting a longer expiration time for the tokens on the server side, but since we're just storing them in localStorage, we don't need to do anything special here.
+		if (credentials.rememberMe) {
+			// This usually means that the user wants to stay logged in for a longer period of time, so we can set the cookies to expire in 30 days instead of 7 days.
 		}
 
 		return data;

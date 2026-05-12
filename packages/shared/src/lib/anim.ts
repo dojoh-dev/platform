@@ -82,7 +82,7 @@ export const shakeElement = (element: HTMLElement) => {
 	// default.css will perform the shake animation when aria-invalid is set to true
 	if (element.ariaInvalid === 'true') {
 		// Restart the animation by toggling the aria-invalid attribute
-		element.ariaInvalid = 'false';
+		element.removeAttribute('aria-invalid');
 		// Force a reflow to ensure the animation can be restarted
 		void element.offsetWidth;
 	}
