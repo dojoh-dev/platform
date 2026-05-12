@@ -1,4 +1,4 @@
-import { createEffect, createSignal, onMount, Show } from 'solid-js';
+import { createEffect, createSignal, onCleanup, onMount, Show } from 'solid-js';
 import { encryptText, shakeElement } from '@repo/shared/anim';
 import { wait } from '@repo/shared/clock';
 import { $$ } from '@repo/shared/dom';
@@ -105,8 +105,12 @@ export default () => {
     let currentPhrase = phrases[currentPhraseIdx];
     let currentCharIdx = 0;
     let isDeleting = false;
+    let stopped = false;
+    let timeoutId: ReturnType<typeof setTimeout> | null = null;
 
     const typeLoop = async () => {
+      if (stopped) return;
+
       if (cursor.dataset.stillTyping !== 'false') {
         cursor.dataset.stillTyping = 'false';
       }
@@ -132,10 +136,17 @@ export default () => {
         }
       }
 
-      setTimeout(typeLoop, 150);
+      if (!stopped) {
+        timeoutId = setTimeout(typeLoop, 150);
+      }
     };
 
     typeLoop();
+
+    onCleanup(() => {
+      stopped = true;
+      if (timeoutId !== null) clearTimeout(timeoutId);
+    });
   });
 
   // Bubble cursor effect (left side)
@@ -153,21 +164,21 @@ export default () => {
 
     let isCursorInside = false;
 
-    leftSide.addEventListener('mouseleave', () => {
+    const onMouseLeave = () => {
       isCursorInside = false;
       document.documentElement.style.cursor = 'default';
-    });
+    };
 
-    leftSide.addEventListener('mouseenter', () => {
+    const onMouseEnter = () => {
       isCursorInside = true;
       document.documentElement.style.cursor = 'none';
       bubbleCursor.style.height = '200px';
       bubbleCursor.style.width = '200px';
-    });
+    };
 
     const FIXED_OFFSET = 20;
 
-    document.addEventListener('mousemove', (e) => {
+    const onMouseMove = (e: MouseEvent) => {
       const elementOnCursor = document.elementFromPoint(e.clientX, e.clientY);
 
       const isHeadingOrText =
@@ -185,6 +196,16 @@ export default () => {
       currentTranslate.y = e.clientY - height / 2 - FIXED_OFFSET;
 
       updateTransform();
+    };
+
+    leftSide.addEventListener('mouseleave', onMouseLeave);
+    leftSide.addEventListener('mouseenter', onMouseEnter);
+    document.addEventListener('mousemove', onMouseMove);
+
+    onCleanup(() => {
+      leftSide.removeEventListener('mouseleave', onMouseLeave);
+      leftSide.removeEventListener('mouseenter', onMouseEnter);
+      document.removeEventListener('mousemove', onMouseMove);
     });
   });
 
@@ -198,7 +219,7 @@ export default () => {
 
     let currentIndex = 0;
 
-    linkTag.addEventListener('click', (e) => {
+    const onClick = (e: MouseEvent) => {
       e.preventDefault();
 
       currentIndex = (currentIndex + 1) % 2;
@@ -225,6 +246,12 @@ export default () => {
         tickDelay: 25,
         wait: 200,
       });
+    };
+
+    linkTag.addEventListener('click', onClick);
+
+    onCleanup(() => {
+      linkTag.removeEventListener('click', onClick);
     });
   });
 
